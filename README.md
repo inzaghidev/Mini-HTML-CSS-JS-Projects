@@ -1,4 +1,4 @@
-# Mini-HTML-CSS-JS-Projects
+# HTML CSS JavaScript Mini Projects
 
 ![HTML, CSS, JavaScript Mini Projects](/images/html-css-js-mini-projects.png)
 
