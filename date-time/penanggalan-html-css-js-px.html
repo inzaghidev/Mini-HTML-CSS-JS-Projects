@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  border: 1px solid #c7c7c7;
+  text-align: left;
+  padding: 8px;
+  width: 30%;
+}
+
+th {
+  border: 1px solid #c7c7c7;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #dddddd;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: grey;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
+  text-align: center;
+  text-align: right;
+  font-size: 20px;
+}
+
+</style>
+</head>
+
+
+<body>
+<h2>Tabel Sistem Penanggalan</h2>
+<table style="width:500px">
+  <tr>
+    <th style="width:50%">Tahun</th><td id="datetime-year"></td>
+  </tr>
+  <tr>
+    <th style="width:50%">Bulan</th><td id="datetime-month"></td>
+  </tr>
+  <tr>
+    <th style="width:50%">Tanggal</th><td id="datetime-date"></td>
+  </tr>
+  <tr>
+    <th style="width:50%">Hari</th><td id="datetime-day"></td>
+  </tr>
+  <tr>
+    <th style="width:50%">Hari ke (dalam Setahun)</th><td id="datetime-dayinyear"></td>
+  </tr>
+  <tr>
+    <th style="width:50%">Sisa Hari (Tahun depan)</th><td id="datetime-daycuntdwn"></td>
+  </tr>
+  <tr>
+    <th style="width:50%">Persentase dalam Setahun</th><td id="datetime-percentage"></td>
+  </tr>
+  <tr>
+    <th style="width:50%">Persentase Hitung Mundur</th><td id="datetime-ctdwnprtg"></td>
+  </tr>
+  <tr>
+    <th style="width:50%">Jam</th><td id="datetime-hour"></td>
+  </tr>
+  <tr>
+    <th style="width:50%">Menit</th><td id="datetime-minute"></td>
+  </tr>
+  <tr>
+    <th style="width:50%">Detik</th><td id="datetime-second"></td>
+  </tr>
+</table>
+
+<br></br>
+
+<h2>Info Tanggal</h2>
+<table style="width:550px">
+  <tr>
+    <th style="width:40%">Hari dan Tanggal</th><td id="datetime-daydate"></td>
+  </tr>
+  <tr>
+    <th style="width:40%">Waktu</th><td id="datetime-time"></td>
+  </tr>
+  <tr>
+    <th style="width:40%">Hari dan Persentase dalam Setahun</th><td id="datetime-daynprtg"></td>
+  </tr>
+</table>
+
+<br></br>
+
+<div id="myProgress"  style="width:550px">
+  <div id="myBar"></div>
+</div>
+
+
+<script>
+function funcdt() {
+  const dt = new Date();
+  
+  let tahun = dt.getFullYear();
+  let bulan = dt.getMonth()+1;
+  let tanggal = dt.getDate();
+  let har = dt.getDay();
+  let jam = dt.getHours();
+  let menit = dt.getMinutes();
+  let detik = dt.getSeconds();
+  
+  let waktu = ("0"+jam).slice(-2)+":"+("0"+menit).slice(-2)+":"+("0"+detik).slice(-2);
+  
+  var start = new Date(tahun, 0, 0);
+  var diff = (dt-start)+((start.getTimezoneOffset()-dt.getTimezoneOffset())*60*1000);
+  var oneDay = 1000*60*60*24;
+  var harke = Math.floor(diff/oneDay);
+  
+  if (tahun % 400 == 0){
+    leap = 366;
+  }
+  else if (tahun % 100 == 0){
+    leap = 365;
+  }
+  else if (tahun % 4 == 0){
+    leap = 366;
+  }
+  else {
+    leap = 365;
+  }
+  
+  var persen = 100/leap*(harke-1+(jam/24)+(menit/1440)+(detik/86400));
+  var harmun = 1+leap-harke;
+  var permun = 100-persen;
+  
+  var num1 = persen;
+  var num2 = permun;
+  
+  
+  const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  let bul = month[bulan-1];
+  
+  const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  let hari = weekday[har];
+  
+  if (hari == "Sunday"){
+    har = 7;
+  }
+  
+  document.getElementById("datetime-daydate").innerHTML = hari+", "+tanggal+" "+bul+" "+tahun;
+  document.getElementById("datetime-time").innerHTML = waktu;
+  document.getElementById("datetime-daynprtg").innerHTML = "Day-"+harke+" ("+num1.toFixed(4)+"%)";
+  document.getElementById("datetime-year").innerHTML = tahun;
+  document.getElementById("datetime-month").innerHTML = bul;
+  document.getElementById("datetime-date").innerHTML = tanggal;
+  document.getElementById("datetime-day").innerHTML = hari;
+  document.getElementById("datetime-dayinyear").innerHTML = harke;
+  document.getElementById("datetime-daycuntdwn").innerHTML = harmun;
+  document.getElementById("datetime-percentage").innerHTML = num1.toFixed(6)+"% <br/>";
+  document.getElementById("datetime-ctdwnprtg").innerHTML = num2.toFixed(6)+"% <br/>";
+  document.getElementById("datetime-hour").innerHTML = jam;
+  document.getElementById("datetime-minute").innerHTML = menit;
+  document.getElementById("datetime-second").innerHTML = detik;
+
+  var i = 0;
+
+  var per = 100/leap*(harke-1+(jam/24)+(menit/1440)+((detik+1)/86400));
+
+  document.getElementById("myBar").innerHTML = per.toFixed(4)+"% <br/>";
+
+  if (i == 0) {
+    i = 10;
+    var elem = document.getElementById("myBar");
+    var width = persen;
+    var id = setInterval(frame, persen);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width = per.toFixed(6);
+        elem.style.width = width + "%";
+      }
+    }
+  }
+}
+
+setInterval(function () {
+	funcdt();
+}, 1000);
+</script>
+
+</body>
+</html>
+
+<!-- https://code.tutsplus.com/tutorials/creating-stylish-and-responsive-progress-bars-using-progressbarjs--cms-30652 -->

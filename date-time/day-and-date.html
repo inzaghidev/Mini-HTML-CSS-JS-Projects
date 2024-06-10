@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td {
+          border: 1px solid #c7c7c7;
+          text-align: left;
+          padding: 8px;
+          width: 30%;
+        }
+        
+        th {
+          border: 1px solid #c7c7c7;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even){
+          background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+          background-color: #dddddd;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        
+        #myProgress {
+          width: 100%;
+          background-color: grey;
+        }
+        
+        #myBar {
+          width: 1%;
+          height: 30px;
+          background-color: green;
+        }
+      </style>
+   </head>
+   
+   <body>
+      <h1>Heading</h1>
+      <table style="width:700px">
+         <tr>
+            <td rowspan="2" id="day"></td>
+            <td id="date"></td>
+            <td style="width:50%">T</td>
+            <td>T</td>
+         </tr>
+         <tr>
+            <td style="width:50%">Hijri Date</td>
+            <td style="width:50%">T</td>
+            <td>T</td>
+         </tr>
+      </table>
+   </body>
+   
+   <script>
+function funcdt() {
+  const dt = new Date();
+  
+  let tahun = dt.getFullYear();
+  let bulan = dt.getMonth()+1;
+  let tanggal = dt.getDate();
+  let har = dt.getDay();
+  let jam = dt.getHours();
+  let menit = dt.getMinutes();
+  let detik = dt.getSeconds();
+  
+  let waktu = ("0"+jam).slice(-2)+":"+("0"+menit).slice(-2)+":"+("0"+detik).slice(-2);
+  
+  var start = new Date(tahun, 0, 0);
+  var diff = (dt-start)+((start.getTimezoneOffset()-dt.getTimezoneOffset())*60*1000);
+  var oneDay = 1000*60*60*24;
+  var harke = Math.floor(diff/oneDay);
+  
+  if (tahun % 400 == 0){
+    leap = 366;
+  }
+  else if (tahun % 100 == 0){
+    leap = 365;
+  }
+  else if (tahun % 4 == 0){
+    leap = 366;
+  }
+  else {
+    leap = 365;
+  }
+  
+  var persen = 100/leap*(harke-1+(jam/24)+(menit/1440)+(detik/86400));
+  var harmun = 1+leap-harke;
+  var permun = 100-persen;
+  
+  var num1 = persen;
+  var num2 = permun;
+  
+  
+  const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  let bul = month[bulan-1];
+  
+  const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  let hari = weekday[har];
+  
+  if (hari == "Sunday"){
+    har = 7;
+  }
+  
+  document.getElementById("day").innerHTML = hari+",";
+  document.getElementById("date").innerHTML = tanggal+" "+bul+" "+tahun;
+
+  var i = 0;
+
+  var per = 100/leap*(harke-1+(jam/24)+(menit/1440)+((detik+1)/86400));
+
+  if (i == 0) {
+    i = 10;
+    var elem = document.getElementById("myBar");
+    var width = persen;
+    var id = setInterval(frame, persen);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width = per.toFixed(6);
+        elem.style.width = width + "%";
+        elem.innerHTML = width  + "%";
+      }
+    }
+  }
+}
+
+setInterval(function () {
+	funcdt();
+}, 1000);
+   </script>
+</html>

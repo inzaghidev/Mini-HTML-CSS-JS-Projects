@@ -1,0 +1,14 @@
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  font-family: "Lato", sans-serif;
+  color: #444444;
+  letter-spacing: 1px;
+  user-select: none;
+}

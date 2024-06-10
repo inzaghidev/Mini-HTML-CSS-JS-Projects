@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+table {
+    font-family: arial,sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    border: 1px solid #c7c7c7;
+    text-align: left;
+    padding: 8px;
+    width: 30%;
+}
+
+th {
+    border: 1px solid #c7c7c7;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #dddddd;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+summary {
+    font-weight: bold;
+    margin: -.5em -.5em 0;
+    padding: .5em;
+}
+
+details {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: .5em .5em 0;
+    padding: 4px;
+    width: 375px;
+}
+
+details[open] {
+    padding: .5em;
+    width:750px;
+}
+
+details[open] summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: .5em;
+    width:750px;
+}
+</style>
+</head>
+
+
+<body>
+<h2>Date Time Progress</h2>
+
+<br>
+<details>
+    <summary>Bahasa Indonesia (ID)</summary>
+    <table style="width:750px">
+          <tr>
+              <th style="width:30%">Hari dan Tanggal</th><td id="datetime-daydate-id"></td>
+          </tr>
+          <tr>
+              <th style="width:30%">Waktu</th><td id="datetime-time-id"></td>
+          </tr>
+          <tr>
+              <th style="width:30%">Hari dan Persentase dalam Setahun</th><td id="datetime-daynprtg-id"></td>
+          </tr>
+          <tr>
+              <th style="width:30%">Hari dan Persentase Hitung Mundur</th><td id="datetime-daynprtg-ctdwn-id"></td>
+          </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>Bahasa Melayu (MS)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">Hari dan Tarikh</th><td id="datetime-daydate-ms"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Masa</th><td id="datetime-time-ms"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Hari dan Peratusan dalam Setahun</th><td id="datetime-daynprtg-ms"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Hari Hitung Mundur dan Peratusan</th><td id="datetime-daynprtg-ctdwn-ms"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>Bahasa Malindo (MA)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">Hari dan Tanggal</th><td id="datetime-daydate-ma"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Tempo</th><td id="datetime-time-ma"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Hari dan Parsentase dalam Satahun</th><td id="datetime-daynprtg-ma"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Hari Hitung Mundur dan Parsentase</th><td id="datetime-daynprtg-ctdwn-ma"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>English (EN)</summary>
+    <table style="width:750px">
+          <tr>
+              <th style="width:30%">Day and Date</th><td id="datetime-daydate-en"></td>
+          </tr>
+          <tr>
+              <th style="width:30%">Time</th><td id="datetime-time-en"></td>
+          </tr>
+          <tr>
+              <th style="width:30%">Days and Percentages in a Year</th><td id="datetime-daynprtg-en"></td>
+          </tr>
+          <tr>
+              <th style="width:30%">Countdown Days and Percentages</th><td id="datetime-daynprtg-ctdwn-en"></td>
+          </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>Nederlands (NL)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">Dag en Datum</th><td id="datetime-daydate-nl"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Tijd</th><td id="datetime-time-nl"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Dagen en Percentages in een jaar</th><td id="datetime-daynprtg-nl"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Afteldagen en Percentages</th><td id="datetime-daynprtg-ctdwn-nl"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>Deutsch (DE)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">Tag und Datum</th><td id="datetime-daydate-de"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Zeit</th><td id="datetime-time-de"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Tage und Prozentsätze in einem Jahr</th><td id="datetime-daynprtg-de"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Countdown-Tage und Prozentsätze</th><td id="datetime-daynprtg-ctdwn-de"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>Español (ES)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">Día y Fecha</th><td id="datetime-daydate-es"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Tiempo</th><td id="datetime-time-es"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Días y Porcentajes en un Año</th><td id="datetime-daynprtg-es"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Días de cuenta regresiva y Porcentajes</th><td id="datetime-daynprtg-ctdwn-es"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>Français (FR)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">Jour et Date</th><td id="datetime-daydate-fr"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Temps</th><td id="datetime-time-fr"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Jours et Pourcentages dans une Année</th><td id="datetime-daynprtg-fr"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Jours de compte à rebours et Pourcentages</th><td id="datetime-daynprtg-ctdwn-fr"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>Português (PT)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">Dia e Data</th><td id="datetime-daydate-pt"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Tempo</th><td id="datetime-time-pt"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Dias e Porcentagens em um Ano</th><td id="datetime-daynprtg-pt"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Dias de contagem regressiva e Porcentagens</th><td id="datetime-daynprtg-ctdwn-pt"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>Italiano (IT)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">Giorno e Data</th><td id="datetime-daydate-it"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Volta</th><td id="datetime-time-it"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Giorni e Percentuali in un Anno</th><td id="datetime-daynprtg-it"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Conto alla rovescia Giorni e Percentuali</th><td id="datetime-daynprtg-ctdwn-it"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>Polski (PL)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">Dzień i Data</th><td id="datetime-daydate-pl"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Czas</th><td id="datetime-time-pl"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Dni i Procenty w Roku</th><td id="datetime-daynprtg-pl"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Dni Odliczania i Procenty</th><td id="datetime-daynprtg-ctdwn-pl"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>Русский (RU)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">День и Дата</th><td id="datetime-daydate-ru"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Время</th><td id="datetime-time-ru"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Дни и Проценты в Году</th><td id="datetime-daynprtg-ru"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Дни обратного отсчета и Проценты</th><td id="datetime-daynprtg-ctdwn-ru"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>Türkçe (TR)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">Gün ve Tarih</th><td id="datetime-daydate-tr"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Zaman</th><td id="datetime-time-tr"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Bir Yıldaki Günler ve Yüzdeler</th><td id="datetime-daynprtg-tr"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Geri Sayım Günleri ve Yüzdeleri</th><td id="datetime-daynprtg-ctdwn-tr"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>Tiếng Việt (VN)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">Ngày và Tháng</th><td id="datetime-daydate-vn"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Thời gian</th><td id="datetime-time-vn"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Số ngày và Phần trăm trong một năm</th><td id="datetime-daynprtg-vn"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">Số ngày và phần trăm đếm ngược</th><td id="datetime-daynprtg-ctdwn-vn"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>中文 (ZH)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">日期和日期</th><td id="datetime-daydate-zh"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">时间</th><td id="datetime-time-zh"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">一年中的天数和百分比</th><td id="datetime-daynprtg-zh"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">倒计时天数和百分比</th><td id="datetime-daynprtg-ctdwn-zh"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>日本語 (JP)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">曜日と日付</th><td id="datetime-daydate-jp"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">時間</th><td id="datetime-time-jp"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">1年の日数とパーセンテージ</th><td id="datetime-daynprtg-jp"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">カウントダウン日数とパーセンテージ</th><td id="datetime-daynprtg-ctdwn-jp"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>한국어 (KO)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">날짜 및 날짜</th><td id="datetime-daydate-ko"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">시간</th><td id="datetime-time-ko"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">1년의 일수와 백분율</th><td id="datetime-daynprtg-ko"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">카운트다운 일 및 백분율</th><td id="datetime-daynprtg-ctdwn-ko"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>اللغة العربية (AR)</summary>
+    <table style="width:750px">
+        <tr>
+            <td id="datetime-daydate-ar" style="text-align:right"></td><th style="width:30%;text-align:right">اليوم والتاريخ</th>
+        </tr>
+        <tr>
+            <td id="datetime-time-ar" style="text-align:right"></td><th style="width:30%;text-align:right">زمن</th>
+        </tr>
+        <tr>
+            <td id="datetime-daynprtg-ar" style="text-align:right"></td><th style="width:30%;text-align:right">الأيام والنسب المئوية في السنة</th>
+        </tr>
+        <tr>
+            <td id="datetime-daynprtg-ctdwn-ar" style="text-align:right"></td><th style="width:30%;text-align:right">أيام العد التنازلي والنسب المئوية</th>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>ไทย (TH)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">วันและวันที่</th><td id="datetime-daydate-th"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">เวลา</th><td id="datetime-time-th"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">วันและเปอร์เซ็นต์ในหนึ่งปี</th><td id="datetime-daynprtg-th"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">นับถอยหลังวันและเปอร์เซ็นต์</th><td id="datetime-daynprtg-ctdwn-th"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+<br>
+<details>
+    <summary>हिन्दी (HI)</summary>
+    <table style="width:750px">
+        <tr>
+            <th style="width:30%">दिन और तारीख</th><td id="datetime-daydate-hi"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">समय</th><td id="datetime-time-hi"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">एक वर्ष में दिन और प्रतिशत</th><td id="datetime-daynprtg-hi"></td>
+        </tr>
+        <tr>
+            <th style="width:30%">उलटी गिनती के दिन और प्रतिशत</th><td id="datetime-daynprtg-ctdwn-hi"></td>
+        </tr>
+    </table>
+</details>
+</br>
+
+
+
+<script>
+function funcdt() {
+    const dt = new Date();
+    
+    let year = dt.getFullYear();
+    let month = dt.getMonth()+1;
+    let date = dt.getDate();
+    let day = dt.getDay();
+    let hour = dt.getHours();
+    let minute = dt.getMinutes();
+    let second = dt.getSeconds();
+    
+    let time = ("0"+hour).slice(-2)+":"+("0"+minute).slice(-2)+":"+("0"+second).slice(-2);
+    
+    var start = new Date(year, 0, 0);
+    var diff = (dt-start)+((start.getTimezoneOffset()-dt.getTimezoneOffset())*60*1000);
+    var oneDay = 1000*60*60*24;
+    var dayYear = Math.floor(diff/oneDay);
+    
+    if (year % 400 == 0){
+      leap = 366;
+    }
+    else if (year % 100 == 0){
+      leap = 365;
+    }
+    else if (year % 4 == 0){
+      leap = 366;
+    }
+    else {
+      leap = 365;
+    }
+    
+    var percent = 100/leap*(dayYear-1+(hour/24)+(minute/1440)+(second/86400));
+    var dayCtdwn = 1+leap-dayYear;
+    var prcntCtdwn = 100-percent;
+    
+    var num1 = percent;
+    var num2 = prcntCtdwn;
+    
+    var percent = 100/leap*(dayYear-1+(hour/24)+(minute/1440)+(second/86400));
+    var dayCtdwn = 1+leap-dayYear;
+    var prcntCtdwn = 100-percent;
+    
+    var num1 = percent;
+    var num2 = prcntCtdwn;
+    
+    
+
+    const monthsID = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+    let monID = monthsID[month-1];
+    
+    const weekdayID = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+    let wkDayID = weekdayID[day];
+
+
+    const monthsMS = ["Januari","Februari","Mac","April","Mai","Jun","Julai","Ogos","September","Oktober","November","Disember"];
+    let monMS = monthsMS[month-1];
+    
+    const weekdayMS = ["Ahad","Isnin","Selasa","Rabu","Khamis","Jumaat","Sabtu"];
+    let wkDayMS = weekdayMS[day];
+
+
+    const monthsMA = ["Januar","Februar","Mart","April","Maiy","Juniy","Juliy","Agus","September","Oktober","November","Dizember"];
+    let monMA = monthsMA[month-1];
+    
+    const weekdayMA = ["Ahad","Sanin","Salasa","Rabu","Kamis","Jumah","Sabat"];
+    let wkDayMA = weekdayMA[day];
+
+
+    const monthsEN = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    let monEN = monthsEN[month-1];
+    
+    const weekdayEN = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    let wkDayEN = weekdayEN[day];
+
+    
+    const monthsNL = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","NLzember"];
+    let monNL = monthsNL[month-1];
+
+    const weekdayNL = ["Zondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag"];
+    let wkDayNL = weekdayNL[day];
+
+
+    const monthsDE = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+    let monDE = monthsDE[month-1];
+
+    const weekdayDE = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+    let wkDayDE = weekdayDE[day];
+
+
+    const monthsES = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+    let monES = monthsES[month-1];
+
+    const weekdayES = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+    let wkDayES = weekdayES[day];
+
+
+    const monthsFR = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+    let monFR = monthsFR[month-1];
+
+    const weekdayFR = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
+    let wkDayFR = weekdayFR[day];
+    
+
+    const monthsPT = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Septembro","Outubro","Novembro","Dezembro"];
+    let monPT = monthsPT[month-1];
+
+    const weekdayPT = ["Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado"];
+    let wkDayPT = weekdayPT[day];
+
+
+    const monthsIT = ["Gennairo","Febbraio","Marzo","Apprile","Maggio","Giugno","Lugio","Agosto","Settembre","Ottobre","Novemre","Dicembre"];
+    let monIT = monthsIT[month-1];
+
+    const weekdayIT = ["Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato"];
+    let wkDayIT = weekdayIT[day];
+
+
+    const monthsPL = ["Styczeń","Luty","Marzec","Kwiecień","Maj","Czerwiec","Lipiec","Sierpień","Wrzesień","Październik","Listopad","Grudzień"];
+    let monPL = monthsPL[month-1];
+
+    const weekdayPL = ["Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota"];
+    let wkDayPL = weekdayPL[day];
+
+
+    const monthsRU = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+    let monRU = monthsRU[month-1];
+    
+    const weekdayRU = ["Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота"];
+    let wkDayRU = weekdayRU[day];
+
+
+    const monthsTR = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+    let monTR = monthsTR[month-1];
+
+    const weekdayTR = ["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
+    let wkDayTR = weekdayTR[day];
+
+
+    const monthsVN = ["Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6","Tháng 7","Tháng 8","Tháng 9","Tháng 10","Tháng 11","Tháng 12"];
+    let monVN = monthsVN[month-1];
+
+    const weekdayVN = ["Chủ nhật","Thứ hai","Thứ ba","Thứ Tư","Thứ năm","Thứ sáu","Thứ bảy"];
+    let wkDayVN = weekdayVN[day];
+
+
+    const monthsZH = ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+    let monZH = monthsZH[month-1];
+
+    const weekdayZH = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+    let wkDayZH = weekdayZH[day];
+
+
+    const monthsJP = ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+    let monJP = monthsJP[month-1];
+
+    const weekdayJP = ["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"];
+    let wkDayJP = weekdayJP[day];
+
+
+    const monthsKO = ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"];
+    let monKO = monthsKO[month-1];
+
+    const weekdayKO = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"];
+    let wkDayKO = weekdayKO[day];
+
+
+    const monthsAR = ["يناير","فبراير","مرس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر "];
+    let monAR = monthsAR[month-1];
+
+    const weekdayAR = ["الأحد‎‎","الاثنين","الثّلاثاء","الْأربعاء","الخميس‎","الجمعة","السّبت"];
+    let wkDayAR = weekdayAR[day];
+
+
+    const monthsTH = ["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"];
+    let monTH = monthsTH[month-1];
+
+    const weekdayTH = ["วันอาทิตย์","วันจันทร์","วันอังคาร","วันพุธ","วันพฤหัสบดี","วันศุกร์","วันเสาร์"];
+    let wkDayTH = weekdayTH[day];
+
+
+    const monthsHI = ["जनवरी","फरवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"];
+    let monHI = monthsHI[month-1];
+    
+    const weekdayHI = ["रविवार","सोमवार","मंगलवार","बुधवार","गुरुवार","शुक्रवार","शनिवार"];
+    let wkDayHI = weekdayHI[day];
+
+
+
+    document.getElementById("datetime-daydate-id").innerHTML = wkDayID+", "+date+" "+monID+" "+year;
+    document.getElementById("datetime-time-id").innerHTML = time+" ("+hour+" Jam "+minute+" Menit "+second+" Detik)";
+    document.getElementById("datetime-daynprtg-id").innerHTML = "Hari ke-"+dayYear+" di Tahun "+year+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-id").innerHTML = dayCtdwn+" Hari lagi menuju Tahun "+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-ms").innerHTML = wkDayMS+", "+date+" "+monMS+" "+year;
+    document.getElementById("datetime-time-ms").innerHTML = time+" ("+hour+" Jam "+minute+" Minit "+second+" Saat)";
+    document.getElementById("datetime-daynprtg-ms").innerHTML = "Hari-"+dayYear+" pada Tahun "+year+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-ms").innerHTML = dayCtdwn+" Hari hingga Tahun "+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-ma").innerHTML = wkDayMA+", "+date+" "+monMA+" "+year;
+    document.getElementById("datetime-time-ma").innerHTML = time+" ("+hour+" Jam "+minute+" Manit "+second+" Sekon)";
+    document.getElementById("datetime-daynprtg-ma").innerHTML = "Hari ke-"+dayYear+" di "+year+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-ma").innerHTML = dayCtdwn+" Hari manuju Tahun "+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-en").innerHTML = wkDayEN+", "+date+" "+monEN+" "+year;
+    document.getElementById("datetime-time-en").innerHTML = time+" ("+hour+" Hour "+minute+" Minute "+second+" Second)";
+    document.getElementById("datetime-daynprtg-en").innerHTML = "Day-"+dayYear+" in "+year+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-en").innerHTML = dayCtdwn+" Days to a Year "+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-nl").innerHTML = wkDayNL+", "+date+" "+monNL+" "+year;
+    document.getElementById("datetime-time-nl").innerHTML = time+" ("+hour+" Uur "+minute+" Minuten "+second+" Seconden)";
+    document.getElementById("datetime-daynprtg-nl").innerHTML = "Dag-"+dayYear+" in "+year+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-nl").innerHTML = dayCtdwn+" Dagen tot een Jaar "+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-de").innerHTML = wkDayDE+", "+date+". "+monDE+" "+year;
+    document.getElementById("datetime-time-de").innerHTML = time+" ("+hour+" Stunde "+minute+" Minute "+second+" Sekunde)";
+    document.getElementById("datetime-daynprtg-de").innerHTML = "Tag-"+dayYear+" im Jahr "+year+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-de").innerHTML = dayCtdwn+" Tage bis ein Jahr "+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-es").innerHTML = wkDayES+", "+date+" de "+monES+" de "+year;
+    document.getElementById("datetime-time-es").innerHTML = time+" ("+hour+" Horas "+minute+" Minutos "+second+" Segundos)";
+    document.getElementById("datetime-daynprtg-es").innerHTML = "Día-"+dayYear+" en "+year+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-es").innerHTML = dayCtdwn+" Días a un Año "+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-fr").innerHTML = wkDayFR+", "+date+" "+monFR+" "+year;
+    document.getElementById("datetime-time-fr").innerHTML = time+" ("+hour+" Heures "+minute+" Minutes "+second+" Secondes)";
+    document.getElementById("datetime-daynprtg-fr").innerHTML = "Jour-"+dayYear+" en "+year+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-fr").innerHTML = dayCtdwn+" Jours à un An "+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-pt").innerHTML = wkDayPT+", "+date+" de "+monPT+" de "+year;
+    document.getElementById("datetime-time-pt").innerHTML = time+" ("+hour+" Hora "+minute+" Minuto "+second+" Segundo)";
+    document.getElementById("datetime-daynprtg-pt").innerHTML = "Dia-"+dayYear+" em "+year+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-pt").innerHTML = dayCtdwn+" Dias para um Ano de "+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-it").innerHTML = wkDayIT+", "+date+" "+monIT+" "+year;
+    document.getElementById("datetime-time-it").innerHTML = time+" ("+hour+" Ore "+minute+" Minuti "+second+" Secondi)";
+    document.getElementById("datetime-daynprtg-it").innerHTML = "Giorno-"+dayYear+" nel "+year+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-it").innerHTML = dayCtdwn+" Giorni a un Anno "+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-pl").innerHTML = wkDayPL+", "+date+" "+monPL+" "+year;
+    document.getElementById("datetime-time-pl").innerHTML = time+" ("+hour+" Godzin "+minute+" Minut "+second+" Sekundy)";
+    document.getElementById("datetime-daynprtg-pl").innerHTML = "Dzień-"+dayYear+" w "+year+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-pl").innerHTML = dayCtdwn+" Dni do Roku "+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-ru").innerHTML = wkDayRU+", "+date+" "+monRU+" "+year;
+    document.getElementById("datetime-time-ru").innerHTML = time+" ("+hour+" Часов "+minute+" Минут "+second+" Секунды)";
+    document.getElementById("datetime-daynprtg-ru").innerHTML = "День-"+dayYear+" в "+year+" Году ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-ru").innerHTML = dayCtdwn+" Дней до "+(year+1)+" Года ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-tr").innerHTML = wkDayTR+", "+date+" "+monTR+" "+year;
+    document.getElementById("datetime-time-tr").innerHTML = time+" ("+hour+" Saat "+minute+" Dakika "+second+" Saniye)";
+    document.getElementById("datetime-daynprtg-tr").innerHTML = year+"'de "+dayYear+". Gün ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-tr").innerHTML = (year+1)+" yılına "+dayCtdwn+" Gün ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-vn").innerHTML = wkDayVN+", Ngày "+date+" "+monVN+" Năm "+year;
+    document.getElementById("datetime-time-vn").innerHTML = time+" ("+hour+" Giờ "+minute+" Phút "+second+" Giây)";
+    document.getElementById("datetime-daynprtg-vn").innerHTML = "Ngày-"+dayYear+" Năm "+year+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-vn").innerHTML = dayCtdwn+" Ngày đến Năm "+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-zh").innerHTML = wkDayZH+", "+year+"年 "+monZH+" "+date+"日";
+    document.getElementById("datetime-time-zh").innerHTML = time+" ("+hour+"小时 "+minute+"分 "+second+"秒)";
+    document.getElementById("datetime-daynprtg-zh").innerHTML = year+"年第"+dayYear+"天 ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-zh").innerHTML = dayCtdwn+"天到一年"+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-jp").innerHTML = wkDayJP+", "+year+"年 "+monJP+" "+date+"日 (火)";
+    document.getElementById("datetime-time-jp").innerHTML = time+" ("+hour+"時間 "+minute+"分 "+second+"秒)";
+    document.getElementById("datetime-daynprtg-jp").innerHTML = year+"年の"+dayYear+"日目 ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-jp").innerHTML = (year+1)+"年までの"+dayCtdwn+"日 ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-ko").innerHTML = wkDayKO+", "+year+"년 "+monKO+" "+date+"일 (토)";
+    document.getElementById("datetime-time-ko").innerHTML = time+" ("+hour+"시 "+minute+"분 "+second+"초)";
+    document.getElementById("datetime-daynprtg-ko").innerHTML = year+"년"+dayYear+"일차 ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-ko").innerHTML = (year+1)+"년까지"+dayCtdwn+"일 ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-ar").innerHTML = year+" "+monAR+" "+date+", "+wkDayAR;
+    document.getElementById("datetime-time-ar").innerHTML = " (ثانية "+second+" دقيقة "+minute+" ساعة "+hour+") "+time;
+    document.getElementById("datetime-daynprtg-ar").innerHTML = "(٪"+num1.toFixed(4)+") "+year+" في "+dayYear+" اليوم";
+    document.getElementById("datetime-daynprtg-ctdwn-ar").innerHTML = "(٪"+num2.toFixed(4)+") "+(year+1)+" يومًا حتى عام "+dayCtdwn;
+
+    document.getElementById("datetime-daydate-th").innerHTML = wkDayTH+" "+date+" "+monTH+" "+year;
+    document.getElementById("datetime-time-th").innerHTML = time+" ("+hour+" ชั่วโมง "+minute+" ชั่วโมง "+second+" วินาที)";
+    document.getElementById("datetime-daynprtg-th").innerHTML = "วันที่ "+dayYear+" ในปี "+year+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-th").innerHTML = dayCtdwn+" วันถึงหนึ่งปี "+(year+1)+" ("+num2.toFixed(4)+"%)";
+
+    document.getElementById("datetime-daydate-hi").innerHTML = wkDayHI+", "+date+" "+monHI+" "+year;
+    document.getElementById("datetime-time-hi").innerHTML = time+" ("+hour+" घंटा "+minute+" मिनट "+second+" सेकेंड)";
+    document.getElementById("datetime-daynprtg-hi").innerHTML = year+" में दिन-"+dayYear+" ("+num1.toFixed(4)+"%)";
+    document.getElementById("datetime-daynprtg-ctdwn-hi").innerHTML = dayCtdwn+" दिन से एक वर्ष "+(year+1)+" ("+num2.toFixed(4)+"%)";
+}
+
+setInterval(function () {
+	funcdt();
+},1000);
+</script>
+
+</body>
+</html>

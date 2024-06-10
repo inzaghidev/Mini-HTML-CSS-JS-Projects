@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date and Time</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h2>Date Time Progress</h2>
+    
+    <br />
+    <details>
+        <summary>Bahasa Indonesia (ID)</summary>
+        <table style="width:750px">
+              <tr>
+                  <th style="width:30%">Hari dan Tanggal</th><td id="datetime-daydate-id"></td>
+              </tr>
+              <tr>
+                  <th style="width:30%">Waktu</th><td id="datetime-time-id"></td>
+              </tr>
+              <tr>
+                  <th style="width:30%">Hari dan Persentase dalam Setahun</th><td id="datetime-daynprtg-id"></td>
+              </tr>
+              <tr>
+                  <th style="width:30%">Hari dan Persentase Hitung Mundur</th><td id="datetime-daynprtg-ctdwn-id"></td>
+              </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>Bahasa Melayu (MS)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">Hari dan Tarikh</th><td id="datetime-daydate-ms"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Masa</th><td id="datetime-time-ms"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Hari dan Peratusan dalam Setahun</th><td id="datetime-daynprtg-ms"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Hari Hitung Mundur dan Peratusan</th><td id="datetime-daynprtg-ctdwn-ms"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>Bahasa Malindo (MA)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">Hari dan Tanggal</th><td id="datetime-daydate-ma"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Tempo</th><td id="datetime-time-ma"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Hari dan Parsentase dalam Satahun</th><td id="datetime-daynprtg-ma"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Hari Hitung Mundur dan Parsentase</th><td id="datetime-daynprtg-ctdwn-ma"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>English (EN)</summary>
+        <table style="width:750px">
+              <tr>
+                  <th style="width:30%">Day and Date</th><td id="datetime-daydate-en"></td>
+              </tr>
+              <tr>
+                  <th style="width:30%">Time</th><td id="datetime-time-en"></td>
+              </tr>
+              <tr>
+                  <th style="width:30%">Days and Percentages in a Year</th><td id="datetime-daynprtg-en"></td>
+              </tr>
+              <tr>
+                  <th style="width:30%">Countdown Days and Percentages</th><td id="datetime-daynprtg-ctdwn-en"></td>
+              </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>Nederlands (NL)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">Dag en Datum</th><td id="datetime-daydate-nl"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Tijd</th><td id="datetime-time-nl"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Dagen en Percentages in een jaar</th><td id="datetime-daynprtg-nl"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Afteldagen en Percentages</th><td id="datetime-daynprtg-ctdwn-nl"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>Deutsch (DE)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">Tag und Datum</th><td id="datetime-daydate-de"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Zeit</th><td id="datetime-time-de"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Tage und Prozentsätze in einem Jahr</th><td id="datetime-daynprtg-de"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Countdown-Tage und Prozentsätze</th><td id="datetime-daynprtg-ctdwn-de"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>Español (ES)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">Día y Fecha</th><td id="datetime-daydate-es"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Tiempo</th><td id="datetime-time-es"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Días y Porcentajes en un Año</th><td id="datetime-daynprtg-es"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Días de cuenta regresiva y Porcentajes</th><td id="datetime-daynprtg-ctdwn-es"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>Français (FR)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">Jour et Date</th><td id="datetime-daydate-fr"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Temps</th><td id="datetime-time-fr"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Jours et Pourcentages dans une Année</th><td id="datetime-daynprtg-fr"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Jours de compte à rebours et Pourcentages</th><td id="datetime-daynprtg-ctdwn-fr"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>Português (PT)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">Dia e Data</th><td id="datetime-daydate-pt"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Tempo</th><td id="datetime-time-pt"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Dias e Porcentagens em um Ano</th><td id="datetime-daynprtg-pt"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Dias de contagem regressiva e Porcentagens</th><td id="datetime-daynprtg-ctdwn-pt"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>Italiano (IT)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">Giorno e Data</th><td id="datetime-daydate-it"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Volta</th><td id="datetime-time-it"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Giorni e Percentuali in un Anno</th><td id="datetime-daynprtg-it"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Conto alla rovescia Giorni e Percentuali</th><td id="datetime-daynprtg-ctdwn-it"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>Polski (PL)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">Dzień i Data</th><td id="datetime-daydate-pl"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Czas</th><td id="datetime-time-pl"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Dni i Procenty w Roku</th><td id="datetime-daynprtg-pl"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Dni Odliczania i Procenty</th><td id="datetime-daynprtg-ctdwn-pl"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>Русский (RU)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">День и Дата</th><td id="datetime-daydate-ru"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Время</th><td id="datetime-time-ru"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Дни и Проценты в Году</th><td id="datetime-daynprtg-ru"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Дни обратного отсчета и Проценты</th><td id="datetime-daynprtg-ctdwn-ru"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>Türkçe (TR)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">Gün ve Tarih</th><td id="datetime-daydate-tr"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Zaman</th><td id="datetime-time-tr"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Bir Yıldaki Günler ve Yüzdeler</th><td id="datetime-daynprtg-tr"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Geri Sayım Günleri ve Yüzdeleri</th><td id="datetime-daynprtg-ctdwn-tr"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>Tiếng Việt (VN)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">Ngày và Tháng</th><td id="datetime-daydate-vn"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Thời gian</th><td id="datetime-time-vn"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Số ngày và Phần trăm trong một năm</th><td id="datetime-daynprtg-vn"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">Số ngày và phần trăm đếm ngược</th><td id="datetime-daynprtg-ctdwn-vn"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>中文 (ZH)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">日期和日期</th><td id="datetime-daydate-zh"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">时间</th><td id="datetime-time-zh"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">一年中的天数和百分比</th><td id="datetime-daynprtg-zh"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">倒计时天数和百分比</th><td id="datetime-daynprtg-ctdwn-zh"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>日本語 (JP)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">曜日と日付</th><td id="datetime-daydate-jp"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">時間</th><td id="datetime-time-jp"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">1年の日数とパーセンテージ</th><td id="datetime-daynprtg-jp"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">カウントダウン日数とパーセンテージ</th><td id="datetime-daynprtg-ctdwn-jp"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>한국어 (KO)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">날짜 및 날짜</th><td id="datetime-daydate-ko"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">시간</th><td id="datetime-time-ko"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">1년의 일수와 백분율</th><td id="datetime-daynprtg-ko"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">카운트다운 일 및 백분율</th><td id="datetime-daynprtg-ctdwn-ko"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>اللغة العربية (AR)</summary>
+        <table style="width:750px">
+            <tr>
+                <td id="datetime-daydate-ar" style="text-align:right"></td><th style="width:30%;text-align:right">اليوم والتاريخ</th>
+            </tr>
+            <tr>
+                <td id="datetime-time-ar" style="text-align:right"></td><th style="width:30%;text-align:right">زمن</th>
+            </tr>
+            <tr>
+                <td id="datetime-daynprtg-ar" style="text-align:right"></td><th style="width:30%;text-align:right">الأيام والنسب المئوية في السنة</th>
+            </tr>
+            <tr>
+                <td id="datetime-daynprtg-ctdwn-ar" style="text-align:right"></td><th style="width:30%;text-align:right">أيام العد التنازلي والنسب المئوية</th>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>ไทย (TH)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">วันและวันที่</th><td id="datetime-daydate-th"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">เวลา</th><td id="datetime-time-th"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">วันและเปอร์เซ็นต์ในหนึ่งปี</th><td id="datetime-daynprtg-th"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">นับถอยหลังวันและเปอร์เซ็นต์</th><td id="datetime-daynprtg-ctdwn-th"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <br>
+    <details>
+        <summary>हिन्दी (HI)</summary>
+        <table style="width:750px">
+            <tr>
+                <th style="width:30%">दिन और तारीख</th><td id="datetime-daydate-hi"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">समय</th><td id="datetime-time-hi"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">एक वर्ष में दिन और प्रतिशत</th><td id="datetime-daynprtg-hi"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">उलटी गिनती के दिन और प्रतिशत</th><td id="datetime-daynprtg-ctdwn-hi"></td>
+            </tr>
+        </table>
+    </details>
+    </br>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>

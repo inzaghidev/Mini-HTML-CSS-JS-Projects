@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Program Sistem Penanggalan</h2>
+    <p id="tahun"></p>
+    <p id="bulan"></p>
+    <p id="tanggal"></p>
+    <p id="hari"></p>
+    <p id="jam"></p>
+    <p id="menit"></p>
+    <p id="detik"></p>
+    <p id="hijriah"></p>
+
+    <script>
+      function toHijriah() {
+        const dt = new Date();
+
+        let tahun = dt.getFullYear();
+        let bulan = dt.getMonth() + 1;
+        let tanggal = dt.getDate();
+        let har = dt.getDay();
+        let jam = dt.getHours();
+        let menit = dt.getMinutes();
+        let detik = dt.getSeconds();
+
+        const month = [
+          "Muharram",
+          "Safar",
+          "Rabi'ul Awal",
+          "Rabi'ul Akhir",
+          "Jumadil Awal",
+          "Jumadil Akhir",
+          "Rajab",
+          "Sha'ban",
+          "Ramadhan",
+          "Shawwal",
+          "Dhul-Qi'dah",
+          "Dhul-Hijjah",
+        ];
+        const weekday = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        let hijriahMonth = month[bulan - 1];
+        let hijriahDay = tanggal;
+        let hijriahYear = tahun;
+
+        let zjd, zl, zn, zj;
+        if (
+          tahun > 1582 ||
+          (tahun == 1582 && bulan > 10) ||
+          (tahun == 1582 && bulan == 10 && tanggal > 14)
+        ) {
+          zjd =
+            (1461 * (tahun + 4800 + (bulan - 14) / 12)) / 4 +
+            (367 * (bulan - 2 - 12 * ((bulan - 14) / 12))) / 12 -
+            (3 * ((tahun + 4900 + (bulan - 14) / 12) / 100)) / 4 +
+            tanggal -
+            32075;
+        } else {
+          zjd =
+            367 * tahun -
+            (7 * (tahun + 5001 + (bulan - 9) / 7)) / 4 +
+            (275 * bulan) / 9 +
+            tanggal +
+            1729777;
+        }
+
+        zl = zjd - 1948440 + 10632;
+        zn = Math.floor((zl - 1) / 10631);
+        zl = zl - 10631 * zn + 354;
+        zj =
+          Math.floor(((10985 - zl) / 5316) * ((50 * zl) / 17719)) +
+          Math.floor((zl / 5670) * ((43 * zl) / 15238));
+        zl =
+          zl -
+          Math.floor(((30 - zj) / 15) * ((17719 * zj) / 50)) -
+          Math.floor((zj / 16) * ((15238 * zj) / 43)) +
+          29;
+        bulanHijriah = Math.floor((24 * zl) / 709);
+        tanggalHijriah = Math.floor(zl - (709 * bulanHijriah) / 24);
+        tahunHijriah = Math.floor(30 * zn + zj - 30);
+
+        let hijriah =
+          tanggalHijriah + " " + hijriahMonth + " " + tahunHijriah + " H";
+
+        return hijriah;
+      }
+
+      // Get current Gregorian date
+      const currentDate = new Date();
+      const year = currentDate.getFullYear();
+      const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+      const day = currentDate.getDate().toString().padStart(2, "0");
+
+      // Convert Gregorian date to Hijri date
+      const hijriDate = toHijriah(currentDate);
+
+      // Display results
+      document.getElementById("tahun").innerHTML =
+        "Tahun                    : " + year;
+      document.getElementById("bulan").innerHTML =
+        "Bulan                    : " + month;
+      document.getElementById("tanggal").innerHTML =
+        "Tanggal                  : " + day;
+      document.getElementById("hari").innerHTML =
+        "Hari                     : " +
+        currentDate.toLocaleString("en-us", { weekday: "long" });
+      document.getElementById("jam").innerHTML =
+        "Jam                      : " + currentDate.getHours();
+      document.getElementById("menit").innerHTML =
+        "Menit                    : " + currentDate.getMinutes();
+      document.getElementById("detik").innerHTML =
+        "Detik                    : " + currentDate.getSeconds();
+      document.getElementById("hijriah").innerHTML =
+        "Hijriah                  : " + hijriDate;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Program Pemilihan Umum 2024</title>
+</head>
+<body>
+  <h1>Program Pemilihan Umum 2024</h1>
+  <form id="electionForm">
+    <label for="paslon">Pilih Pasangan Calon:</label>
+    <select id="paslon">
+      <option value="-1">-- Pilih Pasangan Calon --</option>
+    </select>
+    <br /><br />
+    <label for="partai">Pilih Partai Politik:</label>
+    <select id="partai" disabled>
+      <option value="-1">-- Pilih Partai Politik --</option>
+    </select>
+    <br /><br />
+    <input type="submit" value="Submit" />
+  </form>
+
+  <div id="hasilPilihan" style="display: none;">
+    <h2>PILIHAN ANDA</h2>
+    <p id="paslonOutput"></p>
+    <p id="partaiOutput"></p>
+  </div>
+
+  <script>
+    const paslonPemilu2024 = [
+      "Anies-Muhaimin",
+      "Prabowo-Gibran",
+      "Ganjar-Mahfud",
+    ];
+    const parpolPemilu2024 = [
+      "PKB", "Gerindra", "PDIP", "Golkar", "Nasdem", "Buruh", "Gelora", "PKS", "PKN", "Hanura",
+      "Garuda", "PAN", "PBB", "Demokrat", "PSI", "Perindo", "PPP", "Ummat",
+    ];
+
+    const paslonSelect = document.getElementById("paslon");
+    const partaiSelect = document.getElementById("partai");
+    const hasilPilihan = document.getElementById("hasilPilihan");
+    const paslonOutput = document.getElementById("paslonOutput");
+    const partaiOutput = document.getElementById("partaiOutput");
+
+    // Populate Paslon options
+    paslonPemilu2024.forEach((paslon, index) => {
+      const option = document.createElement("option");
+      option.text = paslon;
+      option.value = index;
+      paslonSelect.appendChild(option);
+    });
+
+    // Event listener for Paslon selection
+    paslonSelect.addEventListener("change", () => {
+      const selectedPaslonIndex = paslonSelect.value;
+      partaiSelect.innerHTML = ""; // Clear existing options
+      const option = document.createElement("option");
+      option.text = "-- Pilih Partai Politik --";
+      option.value = "-1";
+      partaiSelect.appendChild(option);
+
+      if (selectedPaslonIndex !== "-1") {
+        partaiSelect.disabled = false;
+        let allowedParties = [];
+        if (selectedPaslonIndex == 0) {
+          // Anies-Muhaimin
+          allowedParties = ["PKB", "Nasdem", "PKS", "Ummat"];
+        } else if (selectedPaslonIndex == 2) {
+          // Ganjar-Mahfud
+          allowedParties = ["PDIP", "Hanura", "Perindo", "PPP"];
+        } else {
+          // Prabowo-Gibran
+          allowedParties = parpolPemilu2024.filter(
+            (p) => !["PKB", "Nasdem", "PKS", "Ummat", "PDIP", "Hanura", "Perindo", "PPP"].includes(p)
+          );
+        }
+        allowedParties.forEach((party, index) => {
+          const option = document.createElement("option");
+          option.text = party;
+          option.value = index;
+          partaiSelect.appendChild(option);
+        });
+      } else {
+        partaiSelect.disabled = true;
+      }
+    });
+
+    // Event listener for form submission
+    document.getElementById("electionForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const paslonIndex = paslonSelect.value;
+      const partaiIndex = partaiSelect.value;
+      if (paslonIndex !== "-1" && partaiIndex !== "-1") {
+        paslonOutput.textContent = `Pasangan Calon : ${paslonPemilu2024[paslonIndex]}`;
+        partaiOutput.textContent = `Partai Politik : ${parpolPemilu2024[partaiIndex]}`;
+        hasilPilihan.style.display = "block";
+      } else {
+        alert("Pilih Paslon dan Partai Politik terlebih dahulu.");
+      }
+    });
+  </script>
+</body>
+</html>
